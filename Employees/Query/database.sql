@@ -90,12 +90,71 @@ SELECT e.FirstName,
 	   e.BirthDate, 
 	   e.HireDate, 
 	   e.WorkedHours, 
-	   g.Name AS GENDER, 
+	   g.Name AS Gender, 
 	   j.Name AS Job, 
 	   j.PayPerHour, 
 	   d.Name AS Department,
-	   (e.WorkedHours * j.PayPerHour) AS Salary
+	   (e.WorkedHours * j.PayPerHour) AS Salary,
+	   FLOOR(DATEDIFF(DAY, e.BirthDate , GETDATE()) / 365.25) AS Age,
+	   FLOOR(DATEDIFF(DAY, e.HireDate , GETDATE()) / 365.25) AS WorkExperience
 FROM Employee e
 INNER JOIN Department d ON e.Department = d.Id
 INNER JOIN Job j ON e.Job = j.Id
 INNER JOIN Gender g ON e.Gender = g.Id
+
+GO
+
+DROP VIEW IF EXISTS YoungestEmployee;
+
+GO
+
+CREATE VIEW YoungestEmployee AS
+SELECT * FROM EmployeesView ev
+WHERE ev.BirthDate = (
+	SELECT MAX(ev.BirthDate) FROM EmployeesView ev
+	);
+
+GO
+
+CREATE VIEW Retirees AS
+SELECT TOP 9999 * FROM EmployeesView ev
+WHERE (ev.Gender = 'Male' AND ev.Age >= 62) OR (ev.Gender = 'Female' AND ev.Age >= 57)
+ORDER BY ev.Age;
+
+GO
+
+DROP VIEW IF EXISTS AvgSalaryPerDepartment;
+
+GO
+
+CREATE VIEW AvgSalaryPerDepartment AS
+SELECT d.Name, AVG(e.WorkedHours * j.PayPerHour) AS AvgSalary FROM Employee e
+INNER JOIN Department d ON e.Department = d.Id
+INNER JOIN Job j ON e.Job = j.Id
+INNER JOIN Gender g ON e.Gender = g.Id
+WHERE g.Name = 'Male'
+GROUP BY d.Name
+
+GO
+
+CREATE VIEW FemalesWorkExpLessThan5Years AS
+SELECT * FROM EmployeesView ev
+WHERE Gender = 'Female' AND WorkExperience < 5;
+
+GO
+
+CREATE VIEW NoOfEmployeesPerJob AS
+SELECT Job, COUNT(*) AS NoOfEmployees FROM EmployeesView
+GROUP BY Job;
+
+GO
+
+CREATE VIEW Top3Employees AS
+SELECT TOP 3 * FROM EmployeesView 
+ORDER BY WorkedHours DESC;
+
+GO
+
+CREATE VIEW OnlyMales AS
+SELECT * FROM EmployeesView
+WHERE Gender = 'Male';

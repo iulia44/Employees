@@ -47,6 +47,7 @@
             this.genderCB = new System.Windows.Forms.ComboBox();
             this.jobCB = new System.Windows.Forms.ComboBox();
             this.departmentCB = new System.Windows.Forms.ComboBox();
+            this.tasksButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.employeesDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.workedHoursNUD)).BeginInit();
             this.SuspendLayout();
@@ -218,11 +219,22 @@
             this.departmentCB.Size = new System.Drawing.Size(235, 24);
             this.departmentCB.TabIndex = 18;
             // 
+            // tasksButton
+            // 
+            this.tasksButton.Location = new System.Drawing.Point(968, 497);
+            this.tasksButton.Name = "tasksButton";
+            this.tasksButton.Size = new System.Drawing.Size(160, 45);
+            this.tasksButton.TabIndex = 19;
+            this.tasksButton.Text = "Tasks";
+            this.tasksButton.UseVisualStyleBackColor = true;
+            this.tasksButton.Click += new System.EventHandler(this.tasksButton_Click);
+            // 
             // updateBtn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1385, 554);
+            this.Controls.Add(this.tasksButton);
             this.Controls.Add(this.departmentCB);
             this.Controls.Add(this.jobCB);
             this.Controls.Add(this.genderCB);
@@ -274,6 +286,7 @@
         private System.Windows.Forms.ComboBox genderCB;
         private System.Windows.Forms.ComboBox jobCB;
         private System.Windows.Forms.ComboBox departmentCB;
+        private System.Windows.Forms.Button tasksButton;
     }
 }
 

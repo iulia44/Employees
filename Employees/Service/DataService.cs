@@ -197,7 +197,7 @@ namespace Employees.Service
             if (existingEmployee != null)
             {
                 ValidateEmployee(employee);
-
+            
                 existingEmployee.FirstName = employee.FirstName;
                 existingEmployee.LastName = employee.LastName;
                 existingEmployee.BirthDate = employee.BirthDate;

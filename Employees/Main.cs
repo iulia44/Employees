@@ -188,5 +188,13 @@ namespace Employees
             showAddBtn();
             showEmployees();
         }
+
+        private void tasksButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Tasks tasks = new Tasks();
+            tasks.ShowDialog();
+            this.Show();
+        }
     }
 }
