@@ -29,12 +29,14 @@ namespace Employees
             panel6.Hide();
             panel7.Hide();
             panel8.Hide();
-            //panel9.Hide();
-            //panel10.Hide();
+            panel9.Hide();
+            panel10.Hide();
         }
 
         private void Tasks_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'tasksDataSet.Top3Employees' table. You can move, or remove it, as needed.
+            this.top3EmployeesTableAdapter.Fill(this.tasksDataSet.Top3Employees);
             // TODO: This line of code loads data into the 'tasksDataSet.NoOfEmployeesPerJob' table. You can move, or remove it, as needed.
             this.noOfEmployeesPerJobTableAdapter.Fill(this.tasksDataSet.NoOfEmployeesPerJob);
             // TODO: This line of code loads data into the 'tasksDataSet.EmployeesView' table. You can move, or remove it, as needed.
@@ -53,6 +55,8 @@ namespace Employees
             this.task6RW.RefreshReport();
             this.task7RW.RefreshReport();
             this.task8RW.RefreshReport();
+            this.task9RW.RefreshReport();
+            this.task10RW.RefreshReport();
         }
 
         private void showPanel_Click(object sender, EventArgs e)
@@ -63,8 +67,8 @@ namespace Employees
             panel6.Hide();
             panel7.Hide();
             panel8.Hide();
-            //panel9.Hide();
-            //panel10.Hide();
+            panel9.Hide();
+            panel10.Hide();
 
             string selectedTask = panelCB.SelectedItem.ToString(); // Get the selected item as a string
 
@@ -96,11 +100,11 @@ namespace Employees
                     break;
                 case "Task 9":
                     // Show the panel for Task 9
-                    //panel9.Show();
+                    panel9.Show();
                     break;
                 case "Task 10":
                     // Show the panel for Task 10
-                    //panel10.Show();
+                    panel10.Show();
                     break;
                 default:
                     // Hide all panels if no task is selected or the selected task is not handled

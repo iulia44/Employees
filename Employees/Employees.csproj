@@ -137,12 +137,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Report\Task 10.rdlc" />
     <EmbeddedResource Include="Report\Task 3.rdlc" />
     <EmbeddedResource Include="Report\Task 4.rdlc" />
     <EmbeddedResource Include="Report\Task 5.rdlc" />
     <EmbeddedResource Include="Report\Task 6.rdlc" />
     <EmbeddedResource Include="Report\Task 7.rdlc" />
     <EmbeddedResource Include="Report\Task 8.rdlc" />
+    <EmbeddedResource Include="Report\Task 9.rdlc" />
     <EmbeddedResource Include="Tasks.resx">
       <DependentUpon>Tasks.cs</DependentUpon>
     </EmbeddedResource>
